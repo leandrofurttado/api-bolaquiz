@@ -1,0 +1,21 @@
+{
+  "name": "api-bolaquiz",
+  "version": "1.0.0",
+  "description": "API NodeJS com Fastify e Prisma",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Leandro Furtado",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "^6.15.0",
+    "fastify": "^5.5.0",
+    "fastify-cors": "^6.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10",
+    "prisma": "^6.15.0"
+  }
+}
