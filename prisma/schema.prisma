@@ -1,8 +1,4 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+// BOLA QUIZ
 
 generator client {
   provider = "prisma-client-js"
@@ -12,4 +8,53 @@ generator client {
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+
+  // Sala que ele hospeda (1:1)
+  hostedRoom Room? @relation("HostRoom")
+}
+
+model Room {
+  id        Int      @id @default(autoincrement())
+  name      String
+  code      String   @unique
+  createdAt DateTime @default(now())
+
+  // Quem hospeda a sala (1:1)
+  host   User @relation("HostRoom", fields: [hostId], references: [id])
+  hostId Int  @unique
+
+  quizzes Quiz[]
+}
+
+model Quiz {
+  id        Int        @id @default(autoincrement())
+  title     String
+  roomId    Int
+  room      Room       @relation(fields: [roomId], references: [id])
+  questions Question[]
+  createdAt DateTime   @default(now())
+}
+
+model Question {
+  id      Int      @id @default(autoincrement())
+  text    String
+  quizId  Int
+  quiz    Quiz     @relation(fields: [quizId], references: [id])
+  answers Answer[]
+}
+
+model Answer {
+  id         Int      @id @default(autoincrement())
+  text       String
+  isCorrect  Boolean  @default(false)
+  questionId Int
+  question   Question @relation(fields: [questionId], references: [id])
 }
