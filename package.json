@@ -1,21 +1,35 @@
 {
   "name": "api-bolaquiz",
   "version": "1.0.0",
-  "description": "API NodeJS com Fastify e Prisma",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "tsx watch src/server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js"
   },
   "keywords": [],
-  "author": "Leandro Furtado",
+  "author": "",
   "license": "ISC",
   "dependencies": {
+    "@fastify/cors": "^11.1.0",
+    "@fastify/swagger": "^9.5.1",
+    "@fastify/swagger-ui": "^5.2.3",
     "@prisma/client": "^6.15.0",
+    "bcryptjs": "^3.0.2",
+    "dotenv": "^17.2.2",
     "fastify": "^5.5.0",
-    "fastify-cors": "^6.1.0"
+    "fastify-swagger": "^5.2.0",
+    "zod": "^4.1.5"
   },
   "devDependencies": {
-    "nodemon": "^3.1.10",
-    "prisma": "^6.15.0"
+    "@fastify/ajv-compiler": "^4.0.2",
+    "@types/bcryptjs": "^3.0.0",
+    "@types/fastify-cors": "^2.1.2",
+    "@types/node": "^24.3.0",
+    "prisma": "^6.15.0",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.20.5",
+    "typescript": "^5.9.2"
   }
 }
