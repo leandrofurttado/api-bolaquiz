@@ -4,6 +4,7 @@ import { userRoutes } from './routes/user.routes';
 import dotenv from 'dotenv';
 import swagger from '@fastify/swagger';
 import swaggerUi from '@fastify/swagger-ui';
+import { registerErrorHandlers } from './errors_handlers'; // <-- import
 
 dotenv.config();
 
@@ -34,5 +35,6 @@ app.register(swaggerUi, {
 // Routes
 app.register(userRoutes);
 
+registerErrorHandlers(app);
 
 export default app;
