@@ -43,6 +43,11 @@ export function setupErrorHandler(app: FastifyInstance) {
                         detalhe: prismaError.meta,
                     });
 
+                case 'P1000': // Conexão com o banco de dados falhou
+                    return reply.code(500).send({
+                        mensagem: 'Não foi possivel conectar com o nosso banco de dados.',
+                    });
+
                 default:
                     return reply.code(500).send({
                         mensagem: 'Erro no banco de dados.',
