@@ -22,7 +22,7 @@ export function setupErrorHandler(app: FastifyInstance) {
             switch (prismaError.code) {
                 case 'P2002': // unique constraint
                     return reply.code(400).send({
-                        mensagem: 'Já existe um registro com este valor único.',
+                        mensagem: `Já existe um registro com este ${prismaError.meta.target}.`,
                         detalhe: prismaError.meta?.target ? `Campo: ${prismaError.meta.target}` : undefined,
                     });
 
