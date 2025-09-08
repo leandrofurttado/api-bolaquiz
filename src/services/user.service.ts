@@ -3,6 +3,7 @@ import { hashPassword } from '../utils/hash';
 
 export const createUser = async (name: string, email: string, password: string) => {
     const existingUser = await prisma.user.findUnique({ where: { email } });
+
     if (existingUser) {
         throw new Error('Email já cadastrado no sistema! Tente outro email.');
     }

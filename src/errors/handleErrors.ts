@@ -1,6 +1,8 @@
 import { FastifyInstance, FastifyReply, FastifyRequest } from 'fastify';
 import { ZodError } from 'zod';
 
+/* ADICIONADO ESSE HANDLE PARA TRATAR ERROS QUE NÃO FORAM COLOCADOS MANUALMENTE NOS SERVICES CRIADOS. */
+
 export function setupErrorHandler(app: FastifyInstance) {
     app.setErrorHandler((error: unknown, _request: FastifyRequest, reply: FastifyReply) => {
 

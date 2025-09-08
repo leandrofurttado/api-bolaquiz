@@ -35,6 +35,5 @@ app.register(swaggerUi, {
 // Routes
 app.register(userRoutes);
 
-setupErrorHandler(app);
 
 export default app;
