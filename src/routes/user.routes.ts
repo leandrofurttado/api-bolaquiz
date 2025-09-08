@@ -4,7 +4,7 @@ import * as userController from '../controllers/user.controller';
 export const userRoutes = async (fastify: FastifyInstance) => {
     // Criar usuário
     fastify.post(
-        '/users',
+        '/users/register',
         {
             schema: {
                 description: 'Cria um novo usuário',
