@@ -24,7 +24,7 @@ export const updateUser = async (request: FastifyRequest, reply: FastifyReply) =
 export const getUser = async (request: FastifyRequest, reply: FastifyReply) => {
     const { id } = userIdParamZod.parse(request.params);
     const user = await userService.getUserById(id);
-    if (!user) return reply.code(404).send({ message: 'User not found' });
+    if (!user) return reply.code(404).send({ message: 'Usuário não encontrado.' });
     reply.send(user);
 };
 
