@@ -15,7 +15,7 @@ JWT_EXPIRES_IN="24h"
 ## Available Endpoints
 
 ### 1. Login
-**POST** `/login`
+**POST** `/users/login`
 
 Authenticate a user and receive a JWT token.
 
@@ -65,7 +65,7 @@ Authorization: Bearer <your-jwt-token>
 
 2. **Login to get a token**:
    ```bash
-   POST /login
+   POST /users/login
    {
      "email": "john@example.com",
      "password": "password123"

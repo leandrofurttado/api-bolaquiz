@@ -7,7 +7,7 @@ import { authenticateToken } from '../middleware/auth.middleware';
 export const userRoutes = async (fastify: FastifyInstance) => {
     // Login
     fastify.post(
-        '/login',
+        '/users/login',
         {
             schema: {
                 description: 'Login de usuário com email e senha',
