@@ -1,5 +1,5 @@
 import prisma from '../prisma/prisma-client';
-import { hashPassword } from '../utils/hash';
+import { hashPassword, comparePassword } from '../utils/hash';
 
 export const createUser = async (name: string, email: string, password: string) => {
     const existingUser = await prisma.user.findUnique({ where: { email } });
@@ -31,4 +31,22 @@ export const updateUser = async (id: string, data: { name?: string; email?: stri
 
 export const deleteUser = async (id: string) => {
     return prisma.user.delete({ where: { id } });
+};
+
+export const loginUser = async (email: string, password: string) => {
+    const user = await prisma.user.findUnique({ where: { email } });
+
+    if (!user) {
+        throw new Error('Email ou senha inválidos');
+    }
+
+    const isPasswordValid = await comparePassword(password, user.password);
+
+    if (!isPasswordValid) {
+        throw new Error('Email ou senha inválidos');
+    }
+
+    // Return user without password
+    const { password: _, ...userWithoutPassword } = user;
+    return userWithoutPassword;
 };

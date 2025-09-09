@@ -1,6 +1,7 @@
 import Fastify from 'fastify';
 import cors from '@fastify/cors';
 import { userRoutes } from './routes/user.routes';
+import { authRoutes } from './routes/auth.routes';
 import dotenv from 'dotenv';
 import swagger from '@fastify/swagger';
 import swaggerUi from '@fastify/swagger-ui';
@@ -20,6 +21,15 @@ app.register(swagger, {
             title: 'BolaQuiz API',
             description: 'API de Quiz de Futebol',
             version: '1.0.0'
+        },
+        components: {
+            securitySchemes: {
+                bearerAuth: {
+                    type: 'http',
+                    scheme: 'bearer',
+                    bearerFormat: 'JWT'
+                }
+            }
         }
     }
 });
@@ -33,6 +43,7 @@ app.register(swaggerUi, {
 });
 
 // Routes
+app.register(authRoutes);
 app.register(userRoutes);
 
 registerErrorHandlers(app);
