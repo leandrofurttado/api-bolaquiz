@@ -1,6 +1,7 @@
 import { FastifyInstance } from 'fastify';
 import * as userController from '../controllers/user.controller';
 import * as authController from '../controllers/auth.controller';
+import { authenticateToken } from '../middleware/auth.middleware';
 
 
 export const userRoutes = async (fastify: FastifyInstance) => {

@@ -16,19 +16,17 @@ app.register(cors, { origin: '*' });
 
 // Swagger
 app.register(swagger, {
-    openapi: {
+    swagger: {
         info: {
             title: 'BolaQuiz API',
             description: 'API de Quiz de Futebol',
             version: '1.0.0'
         },
-        components: {
-            securitySchemes: {
-                bearerAuth: {
-                    type: 'http',
-                    scheme: 'bearer',
-                    bearerFormat: 'JWT'
-                }
+        securityDefinitions: {
+            bearerAuth: {
+                type: 'apiKey',
+                name: 'Authorization',
+                in: 'header'
             }
         }
     }
